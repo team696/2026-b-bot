@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        maven { url "https://frcmaven.wpi.edu/artifactory/release" }
+    }
+}
+
+rootProject.name = '2026-b-bot'
