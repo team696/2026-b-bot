@@ -5,24 +5,19 @@
 package frc.robot;
 
 import static edu.wpi.first.units.Units.*;
-<<<<<<< HEAD
 import frc.robot.subsystems.*;
-=======
->>>>>>> e229d2be188447f824b8819b37f7a8333dccdacf
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import frc.robot.Commands.GyroReset;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-=======
->>>>>>> e229d2be188447f824b8819b37f7a8333dccdacf
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
-import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+//import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -44,10 +39,7 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-<<<<<<< HEAD
 
-=======
->>>>>>> e229d2be188447f824b8819b37f7a8333dccdacf
     public RobotContainer() {
         configureBindings();
     }
@@ -78,28 +70,26 @@ public class RobotContainer {
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
-<<<<<<< HEAD
         // joystick.back().and(joystick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
         // joystick.back().and(joystick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
         // joystick.start().and(joystick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
         // joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
-=======
-        joystick.back().and(joystick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
-        joystick.back().and(joystick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
-        joystick.start().and(joystick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
-        joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
->>>>>>> e229d2be188447f824b8819b37f7a8333dccdacf
 
         // reset the field-centric heading on left bumper press
         joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
 
-<<<<<<< HEAD
-        SmartDashboard.putNumber("Power for shooter", 0);
+        //SmartDashboard.putNumber("Power for shooter", 0.1);
+        //SmartDashboard.putNumber("Power for Intake", -0.1);
 
-        joystick.x().whileTrue(Shooter.get().SHOOT(SmartDashboard.getNumber("Power for shooter", 0)));
+        joystick.x().whileTrue(
+    Shooter.get().SHOOT(-0.95));
 
-=======
->>>>>>> e229d2be188447f824b8819b37f7a8333dccdacf
+    joystick.leftTrigger().whileTrue(
+    Intake.get().INTAKE(0.3));
+
+    joystick.b().whileTrue(new GyroReset(drivetrain));
+    
+
         drivetrain.registerTelemetry(logger::telemeterize);
     }
 

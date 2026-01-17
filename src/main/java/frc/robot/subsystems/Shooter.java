@@ -10,7 +10,6 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.Current;
-import edu.wpi.first.units.measure.Power;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -26,7 +25,7 @@ public class Shooter extends SubsystemBase {
     return shooter;
   }
 
-  private TalonFX mShooter = new TalonFX(30);
+  private TalonFX mShooter = new TalonFX(11);
   private DutyCycleOut DUTY_CYCLE_OUT = new DutyCycleOut(0);
   public StatusSignal<Angle> position;
   public StatusSignal<Current> current;
